@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: queuestats-service
+  labels:
+    app: queuestats
+    tier: backend
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: queuestats
+    tier: backend
+    version: 1.0.0

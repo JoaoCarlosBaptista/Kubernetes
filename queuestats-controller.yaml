@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: queuestats-contr
+  labels:
+    app: queue-stats
+    tier: backend
+    version: 1.0.0
+spec:
+  replicas: 1
+  # Pod Template
+  template:
+    metadata:
+      labels:
+        app: queuestats
+        tier: backend
+        version: 1.0.0
+    spec:
+      containers:
+      - name: queuestats
+        # my own private Container Registry image
+        image: gcr.io/nxcontainersdemo-175115/queue-stats
+        # Arguments to the image entrypoint, more details here:
+        resources:
+          # The resources specification for each Pod, more details here:
+          requests:
+            cpu: 100m
+            memory: 100Mi
